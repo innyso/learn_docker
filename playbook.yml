@@ -1,0 +1,18 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: add docker repo to source.list.d
+      apt_repository: repo='deb https://get.docker.io/ubuntu docker main' state=present
+
+    - name: add docker key
+      apt_key: url='https://get.docker.io/gpg' state=present
+
+    - name: install docker
+      apt: name=lxc-docker state=present update_cache=yes
+
+    - name: create docker group
+      group: name=docker state=present
+
+    - name: add vagrant user to docker group
+      user: name=vagrant state=present group=docker
