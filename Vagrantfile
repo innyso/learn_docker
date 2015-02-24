@@ -10,7 +10,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		config.vm.hostname="docker-vagrant"
 		config.vm.box = "ubuntu/trusty64"
     config.vm.network "private_network", ip: "192.168.50.4"
-    #config.vm.network :public_network, :bridge => "en0: Wi-Fi (AirPort)"
   end
   
   config.vm.provision :ansible do |ansible|
